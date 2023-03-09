@@ -1,4 +1,4 @@
-package com.carefirstpraxis.ma_shop_android
+package com.mobileartslab.ma_shop_android
 
 import org.junit.Test
 

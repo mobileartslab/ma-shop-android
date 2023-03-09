@@ -1,4 +1,4 @@
-package com.carefirstpraxis.ma_shop_android.ui.theme
+package com.mobileartslab.ma_shop_android.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
