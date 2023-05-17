@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ma-shop-android</string>
+    <string name="lp1">The One, the Only Les Paul Custom</string>
+    <string name="lp2">Whet Your Appetite with Slash\'s Signature Gibson Les Paul Standard</string>
+    <string name="lp3">Burstbucker pickups deliver vintage PAF tone</string>
+    <string name="lp4">Les Paul Standard \'50s: Born to Rock</string>
+    <string name="lp5">Les Paul Standard \'60s: Born to Rock</string>
+    <string name="lp6">Classic Looks and a Killer Sound</string>
+    <string name="lp7">Les Paul Classic: Iconic Tone and Uncompromising Playability</string>
+    <string name="lp8">Weight-relieved, Coil-tapped Gibson Les Paul Studio with Endless Player Potential</string>
 </resources>
