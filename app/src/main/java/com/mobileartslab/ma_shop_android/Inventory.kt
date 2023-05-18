@@ -4,6 +4,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class Inventory(
-  @StringRes val stringResourceId: Int,
-  @DrawableRes val imageResourceId: Int
+  @DrawableRes val image: Int,
+  @StringRes val category: Int,
+  @StringRes val headline: Int,
+  @StringRes val subHeadline: Int,
+  @StringRes val content: Int
 )

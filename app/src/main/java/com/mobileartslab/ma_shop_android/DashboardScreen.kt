@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,34 +36,39 @@ fun DashBoardScreen(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InventoryCard(affirmation: Inventory, modifier: Modifier = Modifier) {
-    Card(modifier = modifier.padding(8.dp)) {
-        Column {
+fun InventoryCard(inventory: Inventory, modifier: Modifier = Modifier) {
+    Card(
+      modifier = modifier.padding(12.dp),
+      elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+    ) {
+        Column(Modifier.background(Color.White)) {
             Image(
-                painter = painterResource(affirmation.imageResourceId),
-                contentDescription = stringResource(affirmation.stringResourceId),
+                painter = painterResource(inventory.image),
+                contentDescription = stringResource(inventory.headline),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
             )
             Text(
-                text = stringResource(affirmation.stringResourceId),
-                modifier = Modifier.padding(16.dp),
-                style = MaterialTheme.typography.titleLarge
-            )
-        }
-    }
-}
+                text = stringResource(inventory.category),
+                modifier = Modifier.padding(3.dp),
+                color = Color.Gray,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
 
-@Composable
-private fun Greetings(
-    modifier: Modifier = Modifier,
-    names: List<String> = List(1000) { "$it" }
-) {
-    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-        items(items = names) { name ->
-            Greeting(name = name)
+            )
+            Text(
+                text = stringResource(inventory.headline),
+                modifier = Modifier.padding(3.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = stringResource(inventory.subHeadline),
+                modifier = Modifier.padding(3.dp),
+                color = Color.Gray,
+            )
         }
     }
 }
