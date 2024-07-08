@@ -34,6 +34,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mobileartslab.ma_shop_android.ui.theme.Purple40
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import retrofit2.Call
 import retrofit2.Callback
@@ -74,7 +75,7 @@ fun LoginScreen(navController: NavHostController) {
   }
 
   fun login() {
-    var url = "http://192.168.86.29:8000/api/public/"
+    var url = "http://192.168.1.152:8000/api/public/"
     val retrofit =
       Retrofit.Builder()
         .baseUrl(url)
@@ -104,59 +105,49 @@ fun LoginScreen(navController: NavHostController) {
     }
     login()
   }
-
   Box(modifier = Modifier.fillMaxSize()) {
-    ClickableText(
-      text = AnnotatedString("Sign up here"),
-      modifier = Modifier.align(Alignment.BottomCenter).padding(20.dp),
-      onClick = { navController.navigate(Routes.SignUp.route) },
-      style = TextStyle(
-        fontSize = 14.sp,
-        fontFamily = FontFamily.Default,
-        textDecoration = TextDecoration.Underline,
-        color = Purple40
-      )
+    Image(
+      painter = painterResource(id = R.drawable.nicks_guitar_heaven),
+      contentDescription = "",
+      contentScale = ContentScale.FillBounds,
+      modifier = Modifier.matchParentSize()
     )
   }
+
   Column(
     modifier = Modifier.padding(20.dp),
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    Text(text = "Communicator", style = TextStyle(fontSize = 40.sp))
-    Spacer(modifier = Modifier.size(40.dp))
-    Image(
-      painter = painterResource(id = R.drawable.shop_login),
-      contentDescription = "",
-      modifier = Modifier
-        .size(200.dp)
-        .padding(5.dp)
-    )
 
-    Spacer(modifier = Modifier.height(40.dp))
+    Spacer(modifier = Modifier.height(50.dp))
 
     TextField(
-      label = { Text(text = "Username") },
+      label = { Text(text = "username") },
       value = username.value,
       onValueChange = { username.value = it }
     )
     Text(
-      modifier = Modifier.fillMaxWidth(1f).padding(start = 35.dp),
+      modifier = Modifier
+        .fillMaxWidth(1f)
+        .padding(start = 35.dp),
       text = usernameError.value,
       fontSize = 14.sp,
       color = Color.Red
     )
 
-    Spacer(modifier = Modifier.height(20.dp))
+    Spacer(modifier = Modifier.height(10.dp))
     TextField(
-      label = { Text(text = "Password") },
+      label = { Text(text = "password") },
       value = password.value,
       visualTransformation = PasswordVisualTransformation(),
       keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
       onValueChange = { password.value = it }
     )
     Text(
-      modifier = Modifier.fillMaxWidth(1f).padding(start = 35.dp),
+      modifier = Modifier
+        .fillMaxWidth(1f)
+        .padding(start = 35.dp),
       text = passwordError.value,
       fontSize = 14.sp,
       color = Color.Red
@@ -167,7 +158,9 @@ fun LoginScreen(navController: NavHostController) {
       Button(
         onClick = { onSubmit() },
         shape = RoundedCornerShape(5.dp),
-        modifier = Modifier.fillMaxWidth().height(50.dp)
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(50.dp)
       ) {
         Text(text = "Login")
       }
@@ -186,6 +179,21 @@ fun LoginScreen(navController: NavHostController) {
       style = TextStyle(
         fontSize = 14.sp,
         fontFamily = FontFamily.Default
+      )
+    )
+  }
+  Box(modifier = Modifier.fillMaxSize()) {
+    ClickableText(
+      text = AnnotatedString("Sign up here"),
+      modifier = Modifier
+        .align(Alignment.BottomCenter)
+        .padding(20.dp),
+      onClick = { navController.navigate(Routes.SignUp.route) },
+      style = TextStyle(
+        fontSize = 14.sp,
+        fontFamily = FontFamily.Default,
+        textDecoration = TextDecoration.Underline,
+        color = Purple40
       )
     )
   }
